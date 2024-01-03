@@ -1,0 +1,92 @@
+-------------------------------------------------------------------------------------------
+
+# Promises :- 
+
+1. Promises can be in either of the states:- Pending, Rejected, Fulfilled.
+
+2. Initilly the promise in a pending state and then goes to either rejected or fulfilled state.
+
+3. The promise takes in a function as an argument and this function takes two parameters - resolve and reject (both functions)
+
+resolve - if we want to pass any data to the application we need to pass through the resolve.
+
+4. '.then' and '.catch' :-
+
+then method is used to get the data in resolve.
+catch method is used to get the data in reject.
+
+first we invoke .then and then we invoke .catch
+eg. promise.then().catch()  
+
+-------------------------------------------------------------------------------------------
+
+# Async / Await :- 
+
+1. An async function will always return a Promise.
+
+2. Only with async function we can use 'await' which waits till promise is settled (fulfilled / rejected).
+
+3. Popular practice (and an important one) :- write the await code inside a try block so that if errors occurs you can log them inside error block.
+
+Note:-  (**IMP**)
+
+If you are writing code inside try block (or without try block) in a async function which is dealing with promises remember that using await to get that data only enables you deal with that data right away (inside that function itself). But, if you return that data, the async function will (always) return a promise.
+
+So if a async function returns something you again need to use '.then' functoinality to deal with it.
+
+Eg.
+
+const example = async () => {
+  return "did it returned a promise?";
+};
+
+console.log(example());
+
+-------------------------------------------------------------------------------------------
+
+# Fetch and Fetch Errors :- 
+
+1. 'fetch()' function by default performs a get request and returns a promise.
+
+2. Fetch only throws errors if it cannot resolve it. 
+
+3. It wont give you errors if its about data (ie we might not be getting data).
+
+Eg.
+
+`
+// the url musnt exist to get the error (or there should be something wromg about it or its response)
+
+const response = await fetch(url);
+console.log(response) // wont give error (try block executes)
+console.log(reponse.json()) // gives error (catch block executes - displaying error)
+`
+
+in 1st case where you arent getting an error (try block executes) you can throw an error using 'throw' which executes the catch block.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
